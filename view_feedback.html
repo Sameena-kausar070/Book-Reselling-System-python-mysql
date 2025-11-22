@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seller Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .feedback-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        .username {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .rating {
+            color: #f39c12;
+        }
+        .date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Feedback Received</h1>
+
+    {% if feedback_list %}
+        {% for feedback in feedback_list %}
+            <div class="feedback-card">
+                <div class="username">{{ feedback.buyer_username }}</div>
+                <div class="rating">Rating: {{ feedback.rating }}/5</div>
+                <p>{{ feedback.feedback }}</p>
+                <div class="date">Submitted on: {{ feedback.created_at }}</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No feedback available.</p>
+    {% endif %}
+
+</body>
+</html>

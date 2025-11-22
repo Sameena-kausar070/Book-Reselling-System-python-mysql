@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cancel Order</title>
+    <style>
+        body { font-family: Arial; background: #fff0f0; padding: 20px; }
+        h2 { color: #900; }
+        table { background: white; border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ccc; }
+        button { background: red; color: white; border: none; padding: 6px 12px; }
+    </style>
+</head>
+<body>
+<h2>❌ Cancel Order</h2>
+<table>
+    <thead><tr><th>Order ID</th><th>Book</th><th>Date</th><th>Action</th></tr></thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.book_title }}</td>
+            <td>{{ order.order_date }}</td>
+            <td>
+                <form method="POST" action="/buyer/cancel_order/{{ order.id }}">
+                    <button type="submit">Cancel</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Book</title>
+    <style>
+        body { font-family: Arial; background: #eef; padding: 20px; }
+        h2 { color: #333; }
+        form { margin-bottom: 20px; }
+        input[type="text"] { padding: 10px; width: 300px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 12px; }
+        th { background: #007bff; color: white; }
+    </style>
+</head>
+<body>
+<h2>🔍 Search Book</h2>
+<form method="POST">
+    <input type="text" name="query" placeholder="Enter book title or author">
+    <button type="submit">Search</button>
+</form>
+
+{% if results %}
+<table>
+    <thead><tr><th>Title</th><th>Author</th><th>Price</th></tr></thead>
+    <tbody>
+        {% for book in results %}
+        <tr><td>{{ book.title }}</td><td>{{ book.author }}</td><td>{{ book.price }}</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+</body>
+</html>

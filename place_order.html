@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place Order</title>
+    <style>
+        body { font-family: Arial; background: #f0fff0; padding: 20px; }
+        h2 { color: #333; }
+        form { background: white; padding: 20px; border-radius: 10px; }
+        label, select, input { display: block; margin-bottom: 12px; }
+        button { background: green; color: white; padding: 10px 20px; border: none; }
+    </style>
+</head>
+<body>
+<h2>🛒 Place an Order</h2>
+<form method="POST">
+    <label for="book">Select Book:</label>
+    <select name="book_id" id="book">
+        {% for book in books %}
+        <option value="{{ book.id }}">{{ book.title }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" min="1" required>
+
+    <button type="submit">Place Order</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Enhanced Styling -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem;
+            background-color: #e8f0fe;
+            color: #2c3e50;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2a7ae2;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            transition: border 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #4ea8de;
+            box-shadow: 0 0 0 3px rgba(78, 168, 222, 0.2);
+            outline: none;
+        }
+
+        button {
+            background-color: #4ea8de;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #3a91c2;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+
+            form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h2>➕ Add New Book</h2>
+
+<form action="{{ url_for('add_book') }}" method="POST">
+    <input type="text" name="title" placeholder="Book Title" required>
+    <input type="text" name="author" placeholder="Author" required>
+    <textarea name="description" placeholder="Description (optional)" rows="4"></textarea>
+    <input type="text" name="price" placeholder="Price (e.g., 499)" required>
+    <input type="text" name="image_url" placeholder="Image URL (optional)">
+    <button type="submit">Add Book</button>
+</form>
+
+</body>
+</html>

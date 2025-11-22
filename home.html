@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Baazar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+        .hero {
+            background-color: #343a40;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        footer {
+            background: #343a40;
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+        <a class="navbar-brand" href="{{ url_for('home') }}">📚 Book Baazar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Browse Books</a></li>
+
+                {% if 'user_id' in session %}
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for(session['role'] + '_dashboard') }}">My Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1 class="display-4">Welcome to Book Reselling Portal</h1>
+        <p class="lead">Buy, Sell, and Discover Amazing Books</p>
+        {% if 'user_id' not in session %}
+            <a href="{{ url_for('login') }}" class="btn btn-primary m-2">Login</a>
+            <a href="{{ url_for('register') }}" class="btn btn-success m-2">Register</a>
+        {% endif %}
+    </div>
+
+    <!-- About Section -->
+    <div class="container mt-5">
+        <h2>Why Choose Us?</h2>
+        <p>We connect readers and sellers in a seamless, eco-friendly way. Whether you're hunting for a rare gem or reselling textbooks — we’ve got your back!</p>
+        <ul>
+            <li>✅ Affordable books for students & readers</li>
+            <li>💼 Easy listing for sellers</li>
+            <li>🔐 Secure logins for admins, buyers, and sellers</li>
+            <li>🌱 Help the planet by reducing waste</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Book Reselling Portal | Built with ❤️ 
+    </footer>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

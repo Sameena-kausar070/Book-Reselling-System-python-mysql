@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Books</title>
+    <style>
+        body { font-family: Arial; background: #eef; padding: 20px; }
+        h2 { color: #333; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { border: 1px solid #ccc; padding: 12px; text-align: left; }
+        th { background: #007bff; color: white; }
+    </style>
+</head>
+<body>
+<h2>📘 Available Books</h2>
+<table>
+    <thead>
+        <tr><th>ID</th><th>Title</th><th>Author</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr><td>{{ book.id }}</td><td>{{ book.title }}</td><td>{{ book.author }}</td><td>{{ book.price }}</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
